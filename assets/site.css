@@ -9,8 +9,8 @@
   --ink: #2A1F17;
   --gold: #C9963D;
   --gold-soft: #E4C07A;
-  --mist: #8B93A8;
-  --text: #E9E4DA;
+  --mist: #A8957A;
+  --text: #E6CFA3;
   --line: rgba(228, 192, 122, 0.18);
   --aura: linear-gradient(100deg, #E4C07A, #E0447C 22%, #8A5BD6 44%, #3D6CF0 62%, #45C4E0 80%, #E4C07A);
   --sidebar: 280px;
@@ -86,7 +86,7 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 600; letter-spacing: 
 }
 .sidebar-foot a:hover { color: var(--gold-soft); }
 .sidebar-foot svg { width: 18px; height: 18px; flex: none; }
-.copy { color: #5B627A; font-size: 11px; letter-spacing: 0.1em; margin-top: 18px; }
+.copy { color: #7A6A55; font-size: 11px; letter-spacing: 0.1em; margin-top: 18px; }
 
 .menu-btn { display: none; }
 
@@ -111,7 +111,7 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 600; letter-spacing: 
 }
 .piece:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(0,0,0,.45); }
 .piece figcaption { display: flex; justify-content: space-between; gap: 12px; padding: 14px 4px 2px; font-size: 13px; color: #B9AE9C; }
-.piece figcaption b { font-family: 'Syne', sans-serif; font-weight: 600; color: var(--parchment); font-size: 15px; }
+.piece figcaption b { font-family: 'Syne', sans-serif; font-weight: 600; color: var(--text); font-size: 15px; }
 .piece.soon {
   cursor: default; aspect-ratio: 4 / 5;
   display: grid; place-items: center; text-align: center;
@@ -128,8 +128,8 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 600; letter-spacing: 
 }
 .lightbox.open { display: grid; }
 .lightbox img { max-height: 86vh; width: auto; box-shadow: 0 30px 80px rgba(0,0,0,.6); }
-.lightbox p { text-align: center; color: var(--parchment); margin: 16px 0 0; font-family: 'Syne', sans-serif; }
-.lightbox button { position: absolute; top: 20px; right: 24px; background: none; border: 0; color: var(--parchment); font-size: 34px; cursor: pointer; }
+.lightbox p { text-align: center; color: var(--text); margin: 16px 0 0; font-family: 'Syne', sans-serif; }
+.lightbox button { position: absolute; top: 20px; right: 24px; background: none; border: 0; color: var(--text); font-size: 34px; cursor: pointer; }
 
 /* ---------- Parchment (story / blog) ---------- */
 .parchment {
@@ -158,7 +158,7 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 600; letter-spacing: 
 }
 .btn:hover { background: var(--gold); color: var(--midnight); }
 .parchment .btn { color: var(--ink); border-color: var(--ink); }
-.parchment .btn:hover { background: var(--ink); color: var(--parchment); }
+.parchment .btn:hover { background: var(--ink); color: var(--text); }
 
 /* ---------- Hair rooms ---------- */
 .rooms { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; padding: 0 clamp(24px, 6vw, 88px) 40px; }

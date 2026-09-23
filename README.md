@@ -9,3 +9,10 @@ Scott "Scotty" Horan. Painter and hairstylist in San Francisco.
 - `assets/site.js`: **edit links and the artwork list here**
 - `assets/site.css`: brand colors and fonts
 - `CNAME`: tells GitHub Pages to use scottehoran.com
+
+## Brand rules
+- Font: Syne for the logo and headings; Outfit for small text; Cormorant Garamond for story text.
+- Logo: SCOTTeHORAN with the moving aura gradient (gold, pink, purple, blue, aqua), 14 second loop.
+- Backgrounds: midnight blue `#0A0E18`, cocoa brown `#211915` behind artwork, warm ivory parchment `#F3E9D2` for story/blog.
+- **Never white text.** Text is tan amber parchment `#E6CFA3`; quiet text is `#A8957A`. Never cool white anywhere.
+- No em dashes in any written copy.
