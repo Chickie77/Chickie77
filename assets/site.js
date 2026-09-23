@@ -85,7 +85,7 @@ function buildGallery() {
     if (!f) return;
     const a = ART[f.dataset.i];
     lb.querySelector("img").src = a.src;
-    lb.querySelector("p").textContent = a.title;
+    const cap = lb.querySelector("p"); cap.textContent = a.title; colorWords(cap);
     lb.classList.add("open");
   });
 }
@@ -100,10 +100,38 @@ function buildContact() {
     ["Shop", LINKS.ebay ? "eBay store" : "Coming soon", LINKS.ebay]
   ];
   c.innerHTML = rows.map(([k, v, href]) => href
-    ? `<a class="contact-card" href="${href}" target="_blank" rel="noopener"><span>${k}</span><b class="aura-text">${v}</b></a>`
+    ? `<a class="contact-card" href="${href}" target="_blank" rel="noopener"><span>${k}</span><b>${v}</b></a>`
     : `<div class="contact-card"><span>${k}</span><b style="color:var(--mist)">${v}</b></div>`).join("");
+}
+
+// ============================================================
+//  Word colors: each word gets all of Logo One's colors or all of
+//  Logo Two's, taking turns. Skips the logo itself and parchment pages.
+// ============================================================
+let turn = 0;
+function colorWords(root) {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode: n => n.nodeValue.trim() &&
+      !n.parentElement.closest(".logo, .parchment, script, style, .w1, .w2")
+      ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT
+  });
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach(node => {
+    const frag = document.createDocumentFragment();
+    node.nodeValue.split(/(\s+)/).forEach(part => {
+      if (!part) return;
+      if (/^\s+$/.test(part)) { frag.append(part); return; }
+      const s = document.createElement("span");
+      s.className = turn++ % 2 ? "w2" : "w1";
+      s.textContent = part;
+      frag.append(s);
+    });
+    node.replaceWith(frag);
+  });
 }
 
 buildSidebar();
 buildGallery();
 buildContact();
+colorWords(document.body);

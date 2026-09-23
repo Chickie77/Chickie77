@@ -12,6 +12,10 @@
   --mist: #A8957A;
   --text: #E6CFA3;
   --line: rgba(228, 192, 122, 0.18);
+  /* Logo One: indigo, blue, sky, aqua, sage, gold */
+  --logo-one: linear-gradient(90deg, #5F66E5, #3C74EC 22%, #40A3E4 44%, #61C6CD 64%, #AFC39B 82%, #DAB07E);
+  /* Logo Two: pink, orchid, violet, blue, sky */
+  --logo-two: linear-gradient(90deg, #DB4581, #AB52B3 26%, #7D5DDA 50%, #476AED 75%, #4199E7);
   --aura: linear-gradient(100deg, #E4C07A, #E0447C 22%, #8A5BD6 44%, #3D6CF0 62%, #45C4E0 80%, #E4C07A);
   --sidebar: 280px;
 }
@@ -185,7 +189,7 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 600; letter-spacing: 
   text-decoration: none; transition: border-color .2s;
 }
 .contact-card:hover { border-color: var(--gold); }
-.contact-card span { color: var(--mist); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; }
+.contact-card > span { color: var(--mist); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; }
 .contact-card b { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 20px; }
 
 /* ---------- Mobile ---------- */
@@ -212,6 +216,12 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 600; letter-spacing: 
   .story p { font-size: 20px; }
 }
 
-/* Headings run half a loop behind the logo, so the blue, aqua, and gold
-   side of the aura shows while the logo is in pink and purple (and back). */
-.page-title .aura-text, .room:nth-child(2) h2, .contact-card b { animation-delay: -7s; }
+/* ---------- Word colors ----------
+   Every word on the dark pages wears one full logo color set.
+   Words take turns: Logo One, Logo Two, Logo One... */
+.w1, .w2 {
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+.w1 { background-image: var(--logo-one); }
+.w2 { background-image: var(--logo-two); }
