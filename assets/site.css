@@ -211,3 +211,7 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 600; letter-spacing: 
   .story { padding: 56px 16px 72px; }
   .story p { font-size: 20px; }
 }
+
+/* Headings run half a loop behind the logo, so the blue, aqua, and gold
+   side of the aura shows while the logo is in pink and purple (and back). */
+.page-title .aura-text, .room:nth-child(2) h2, .contact-card b { animation-delay: -7s; }
