@@ -13,7 +13,7 @@ Scott "Scotty" Horan. Painter and hairstylist in San Francisco.
 ## Brand rules
 - Font: Syne for the logo and headings; Outfit for small text; Cormorant Garamond for story text.
 - Logo: SCOTTeHORAN with the moving aura gradient (gold, pink, purple, blue, aqua), 14 second loop.
-- Backgrounds: midnight blue `#0A0E18`, cocoa brown `#211915` behind artwork, warm ivory parchment `#F3E9D2` for story/blog.
+- Backgrounds: midnight blue `#0A0E18`, navy `#111727` behind the gallery, light maple wood for room cards and picture frames (text on maple sits on a midnight nameplate), warm ivory parchment `#F3E9D2` for blog text. No cocoa brown.
 - **Never white text.** Every word wears one full logo color set, taking turns word by word:
   - **Logo One:** `#5F66E5` indigo, `#3C74EC` blue, `#40A3E4` sky, `#61C6CD` aqua, `#AFC39B` sage, `#DAB07E` gold
   - **Logo Two:** `#DB4581` pink, `#AB52B3` orchid, `#7D5DDA` violet, `#476AED` blue, `#4199E7` sky
