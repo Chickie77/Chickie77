@@ -4,7 +4,7 @@
 const LINKS = {
   instagram: "https://instagram.com/scottedwinartist",
   ebay: "",   // paste your eBay store link between the quotes
-  email: ""   // paste your email between the quotes
+  email: "scotty@scottehoran.com"
 };
 
 // Add a painting: copy one line, change the file name, title, and details.
