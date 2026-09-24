@@ -7,11 +7,12 @@ const LINKS = {
   email: "scotty@scottehoran.com"
 };
 
+// Add section: "body" to a line to put it on the Body Parts page instead of the Gallery.
 // Add a painting: copy one line, change the file name, title, and details.
 // Put the image file in the assets/art folder.
 const ART = [
-  { src: "assets/art/painting-20.jpg", title: "Untitled", details: "" },
-  { src: "assets/art/painting-21.jpg", title: "Untitled", details: "" },
+  { src: "assets/art/painting-20.jpg", title: "Untitled", details: "", section: "body" },
+  { src: "assets/art/painting-21.jpg", title: "Untitled", details: "", section: "body" },
   { src: "assets/art/painting-18.jpg", title: "Untitled", details: "" },
   { src: "assets/art/painting-19.jpg", title: "Untitled", details: "" },
   { src: "assets/art/painting-15.jpg", title: "Untitled", details: "" },
@@ -52,6 +53,7 @@ const NOTES = [
 // ============================================================
 const PAGES = [
   ["index.html", "Gallery"],
+  ["body.html", "Body Parts"],
   ["hair.html", "Hair"],
   ["story.html", "Story"],
   ["notes.html", "Notes"],
@@ -102,7 +104,8 @@ function buildHeader() {
 function buildGallery() {
   const g = document.getElementById("gallery");
   if (!g) return;
-  g.innerHTML = ART.map((a, i) => `
+  const section = g.dataset.section || "";
+  g.innerHTML = ART.map((a, i) => (a.section || "") !== section ? "" : `
     <figure class="piece" data-i="${i}">
       <div class="frame"><img src="${a.src}" alt="${a.title}" loading="lazy"></div>
       <figcaption><b>${a.title}</b><span>${a.details || ""}</span></figcaption>
