@@ -2,14 +2,14 @@
 :root {
   --midnight: #0A0E18;
   --midnight-2: #111727;
-  --maple: #E6CBA0;
-  /* Light maple wood: soft grain streaks over a warm honey base */
-  --maple-wood:
-    repeating-linear-gradient(92deg, rgba(150,100,50,0) 0 7px, rgba(150,100,50,.05) 7px 8px, rgba(150,100,50,0) 9px 23px, rgba(150,100,50,.05) 23px 24px),
-    repeating-linear-gradient(88deg, rgba(255,240,215,.0) 0 31px, rgba(255,240,215,.16) 31px 34px, rgba(255,240,215,0) 36px 57px),
-    repeating-linear-gradient(90.6deg, rgba(160,110,60,.0) 0 90px, rgba(160,110,60,.10) 90px 96px, rgba(160,110,60,0) 96px 140px),
-    radial-gradient(ellipse 60% 20% at 30% 40%, rgba(255,245,225,.45), transparent 70%),
-    linear-gradient(90deg, #E9D0A8, #E2C396 30%, #EACFA4 55%, #DDBD8E 80%, #E7CCA0);
+  /* Mahogany wood: deep red-brown stain with soft grain and a satin sheen */
+  --wood:
+    repeating-linear-gradient(91deg, rgba(20,5,0,0) 0 6px, rgba(20,5,0,.18) 6px 8px, rgba(20,5,0,0) 8px 21px, rgba(20,5,0,.12) 21px 22px),
+    repeating-linear-gradient(89deg, rgba(190,90,55,0) 0 29px, rgba(190,90,55,.14) 29px 33px, rgba(190,90,55,0) 33px 61px),
+    repeating-linear-gradient(90.5deg, rgba(0,0,0,0) 0 84px, rgba(0,0,0,.16) 84px 92px, rgba(0,0,0,0) 92px 150px),
+    radial-gradient(ellipse 70% 22% at 30% 35%, rgba(220,130,90,.22), transparent 70%),
+    linear-gradient(90deg, #5A2217, #6E2B1C 25%, #5C2418 50%, #74301F 75%, #5B2317);
+  --wood-edge: #2E0F09;
   --parchment: #F3E9D2;
   --parchment-2: #E9DCBE;
   --ink: #2A1F17;
@@ -115,13 +115,13 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 600; letter-spacing: 
 }
 .piece {
   break-inside: avoid; margin: 0 0 32px;
-  background: var(--maple-wood);
-  padding: 14px; border: 1px solid #C9A676;
-  box-shadow: inset 0 0 0 1px rgba(255,245,225,.5), 0 10px 26px rgba(0,0,0,.35);
+  background: var(--wood);
+  padding: 14px; border: 1px solid var(--wood-edge);
+  box-shadow: inset 0 0 0 1px rgba(230,150,110,.25), 0 10px 26px rgba(0,0,0,.35);
   cursor: zoom-in; transition: transform .3s, box-shadow .3s;
 }
 .piece:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(0,0,0,.45); }
-.piece figcaption { display: flex; justify-content: space-between; gap: 12px; margin-top: 14px; padding: 10px 14px; background: var(--midnight); border: 1px solid #C9A676; font-size: 13px; color: #B9AE9C; }
+.piece figcaption { display: flex; justify-content: space-between; gap: 12px; margin-top: 14px; padding: 10px 14px; background: var(--midnight); border: 1px solid var(--wood-edge); font-size: 13px; color: #B9AE9C; }
 .piece figcaption b { font-family: 'Syne', sans-serif; font-weight: 600; color: var(--text); font-size: 15px; }
 .piece.soon {
   cursor: default; aspect-ratio: 4 / 5;
@@ -175,8 +175,8 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 600; letter-spacing: 
 .rooms { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; padding: 0 clamp(24px, 6vw, 88px) 40px; }
 .room {
   position: relative; padding: 44px 36px; min-height: 260px;
-  background: var(--maple-wood); border: 1px solid #C9A676;
-  box-shadow: inset 0 0 0 1px rgba(255,245,225,.5), 0 14px 30px rgba(0,0,0,.35);
+  background: var(--wood); border: 1px solid var(--wood-edge);
+  box-shadow: inset 0 0 0 1px rgba(230,150,110,.25), 0 14px 30px rgba(0,0,0,.35);
   text-decoration: none; display: flex; flex-direction: column; justify-content: flex-end;
   overflow: hidden; transition: transform .3s;
 }
@@ -184,7 +184,7 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 600; letter-spacing: 
 .room:hover { transform: translateY(-4px); }
 .room h2 { font-size: clamp(34px, 4vw, 48px); }
 .room p { color: #B9AE9C; margin: 10px 0 0; }
-.plaque { background: var(--midnight); border: 1px solid #C9A676; padding: 22px 26px; box-shadow: 0 6px 16px rgba(60,35,10,.35); }
+.plaque { background: var(--midnight); border: 1px solid var(--wood-edge); padding: 22px 26px; box-shadow: 0 6px 16px rgba(0,0,0,.45); }
 .lookbook-head { padding: 72px clamp(24px, 6vw, 88px) 24px; scroll-margin-top: 20px; }
 .lookbook-head h2 { font-size: 40px; }
 .lookbook { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; padding: 0 clamp(24px, 6vw, 88px) 40px; }
