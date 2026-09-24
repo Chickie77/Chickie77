@@ -53,7 +53,6 @@ const NOTES = [
 // ============================================================
 const PAGES = [
   ["index.html", "Gallery"],
-  ["body.html", "Body Parts"],
   ["hair.html", "Hair"],
   ["story.html", "Story"],
   ["notes.html", "Notes"],
@@ -67,12 +66,13 @@ const icons = {
 };
 
 function buildHeader() {
-  const here = location.pathname.split("/").pop() || "index.html";
+  let here = location.pathname.split("/").pop() || "index.html";
+  if (here === "body.html") here = "index.html";
   const nav = PAGES.map(([href, label]) =>
     `<li><a href="${href}"${href === here ? ' aria-current="page"' : ""}>${label}</a></li>`).join("");
 
   const header = document.createElement("header");
-  header.className = "topbar";
+  header.className = "sidebar";
   header.innerHTML = `
     <div class="brand">
       <a class="logo aura-text" href="index.html">SCOTTeHORAN</a>
