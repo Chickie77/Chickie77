@@ -11,27 +11,27 @@ const LINKS = {
 // Add a painting: copy one line, change the file name, title, and details.
 // Put the image file in the assets/art folder.
 const ART = [
-  { src: "assets/art/painting-20.jpg", title: "Untitled", details: "", section: "body" },
-  { src: "assets/art/painting-21.jpg", title: "Untitled", details: "", section: "body" },
-  { src: "assets/art/painting-18.jpg", title: "Untitled", details: "" },
-  { src: "assets/art/painting-19.jpg", title: "Untitled", details: "" },
-  { src: "assets/art/painting-15.jpg", title: "Untitled", details: "" },
-  { src: "assets/art/painting-16.jpg", title: "Untitled", details: "" },
-  { src: "assets/art/painting-17.jpg", title: "Untitled", details: "" },
-  { src: "assets/art/painting-14.jpg", title: "Untitled", details: "" },
-  { src: "assets/art/painting-12.jpg", title: "Untitled", details: "" },
-  { src: "assets/art/painting-13.jpg", title: "Untitled", details: "" },
-  { src: "assets/art/painting-09.jpg", title: "Untitled", details: "" },
-  { src: "assets/art/painting-10.jpg", title: "Untitled", details: "" },
-  { src: "assets/art/painting-11.jpg", title: "Untitled", details: "" },
-  { src: "assets/art/painting-06.jpg", title: "Untitled", details: "" },
-  { src: "assets/art/painting-07.jpg", title: "Untitled", details: "" },
-  { src: "assets/art/painting-08.jpg", title: "Untitled", details: "" },
-  { src: "assets/art/painting-03.jpg", title: "Untitled", details: "" },
-  { src: "assets/art/painting-02.jpg", title: "Untitled", details: "" },
-  { src: "assets/art/painting-01.jpg", title: "Untitled", details: "" },
+  { src: "assets/art/painting-04.jpg", title: "Untitled", details: "" },
   { src: "assets/art/painting-05.jpg", title: "Untitled", details: "" },
-  { src: "assets/art/painting-04.jpg", title: "Untitled", details: "" }
+  { src: "assets/art/painting-01.jpg", title: "Untitled", details: "" },
+  { src: "assets/art/painting-02.jpg", title: "Untitled", details: "" },
+  { src: "assets/art/painting-03.jpg", title: "Untitled", details: "" },
+  { src: "assets/art/painting-08.jpg", title: "Untitled", details: "" },
+  { src: "assets/art/painting-07.jpg", title: "Untitled", details: "" },
+  { src: "assets/art/painting-06.jpg", title: "Untitled", details: "" },
+  { src: "assets/art/painting-11.jpg", title: "Untitled", details: "" },
+  { src: "assets/art/painting-10.jpg", title: "Untitled", details: "" },
+  { src: "assets/art/painting-09.jpg", title: "Untitled", details: "" },
+  { src: "assets/art/painting-13.jpg", title: "Untitled", details: "" },
+  { src: "assets/art/painting-12.jpg", title: "Untitled", details: "" },
+  { src: "assets/art/painting-14.jpg", title: "Untitled", details: "" },
+  { src: "assets/art/painting-17.jpg", title: "Untitled", details: "" },
+  { src: "assets/art/painting-16.jpg", title: "Untitled", details: "" },
+  { src: "assets/art/painting-15.jpg", title: "Untitled", details: "" },
+  { src: "assets/art/painting-19.jpg", title: "Untitled", details: "" },
+  { src: "assets/art/painting-18.jpg", title: "Untitled", details: "" },
+  { src: "assets/art/painting-21.jpg", title: "Untitled", details: "", section: "body" },
+  { src: "assets/art/painting-20.jpg", title: "Untitled", details: "", section: "body" }
 ];
 
 // Add a note: copy the example below, remove the // at the start of
@@ -106,10 +106,14 @@ function buildGallery() {
   if (!g) return;
   const section = g.dataset.section || "";
   g.innerHTML = ART.map((a, i) => (a.section || "") !== section ? "" : `
-    <figure class="piece" data-i="${i}">
+    <figure class="piece" data-i="${i}" style="--r:0.8">
       <div class="frame"><img src="${a.src}" alt="${a.title}" loading="lazy"></div>
-      <figcaption><b>${a.title}</b><span>${a.details || ""}</span></figcaption>
     </figure>`).join("");
+  // Each piece's width follows its picture's shape, so every row lines up evenly.
+  g.querySelectorAll(".piece img").forEach(img => {
+    const fit = () => img.naturalWidth && img.closest(".piece").style.setProperty("--r", (img.naturalWidth / img.naturalHeight).toFixed(3));
+    img.complete ? fit() : img.addEventListener("load", fit);
+  });
 
   const lb = document.createElement("div");
   lb.className = "lightbox";
