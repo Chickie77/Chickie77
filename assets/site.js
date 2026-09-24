@@ -97,7 +97,7 @@ function buildGallery() {
   lb.innerHTML = `<button aria-label="Close">&times;</button><div><img alt=""><p></p></div>`;
   document.body.append(lb);
   const close = () => lb.classList.remove("open");
-  lb.addEventListener("click", e => { if (e.target === lb || e.target.tagName === "BUTTON") close(); });
+  lb.addEventListener("click", e => { if (e.target === lb || e.target.closest("button")) close(); });
   document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
   g.addEventListener("click", e => {
     const f = e.target.closest(".piece[data-i]");
