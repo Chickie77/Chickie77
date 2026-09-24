@@ -10,6 +10,8 @@ const LINKS = {
 // Add a painting: copy one line, change the file name, title, and details.
 // Put the image file in the assets/art folder.
 const ART = [
+  { src: "assets/art/painting-18.jpg", title: "Untitled", details: "" },
+  { src: "assets/art/painting-19.jpg", title: "Untitled", details: "" },
   { src: "assets/art/painting-15.jpg", title: "Untitled", details: "" },
   { src: "assets/art/painting-16.jpg", title: "Untitled", details: "" },
   { src: "assets/art/painting-17.jpg", title: "Untitled", details: "" },
