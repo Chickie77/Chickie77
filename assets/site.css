@@ -2,14 +2,6 @@
 :root {
   --midnight: #0A0E18;
   --midnight-2: #111727;
-  /* Mahogany wood: deep red-brown stain with soft grain and a satin sheen */
-  --wood:
-    repeating-linear-gradient(91deg, rgba(20,5,0,0) 0 6px, rgba(20,5,0,.18) 6px 8px, rgba(20,5,0,0) 8px 21px, rgba(20,5,0,.12) 21px 22px),
-    repeating-linear-gradient(89deg, rgba(190,90,55,0) 0 29px, rgba(190,90,55,.14) 29px 33px, rgba(190,90,55,0) 33px 61px),
-    repeating-linear-gradient(90.5deg, rgba(0,0,0,0) 0 84px, rgba(0,0,0,.16) 84px 92px, rgba(0,0,0,0) 92px 150px),
-    radial-gradient(ellipse 70% 22% at 30% 35%, rgba(220,130,90,.22), transparent 70%),
-    linear-gradient(90deg, #5A2217, #6E2B1C 25%, #5C2418 50%, #74301F 75%, #5B2317);
-  --wood-edge: #2E0F09;
   --parchment: #F3E9D2;
   --parchment-2: #E9DCBE;
   --ink: #2A1F17;
@@ -23,13 +15,18 @@
   /* Logo Two: pink, orchid, violet, blue, sky */
   --logo-two: linear-gradient(90deg, #DB4581, #AB52B3 26%, #7D5DDA 50%, #476AED 75%, #4199E7);
   --aura: linear-gradient(100deg, #E4C07A, #E0447C 22%, #8A5BD6 44%, #3D6CF0 62%, #45C4E0 80%, #E4C07A);
-  --sidebar: 280px;
 }
 
 * { box-sizing: border-box; }
 html, body { margin: 0; }
 body {
-  background: var(--midnight);
+  /* Glowing color fog, borrowed from ME/IT Studio and toned down */
+  background:
+    radial-gradient(1100px 640px at 82% -4%, rgba(138, 91, 214, 0.30), transparent 62%),
+    radial-gradient(900px 600px at -6% 38%, rgba(219, 69, 129, 0.16), transparent 60%),
+    radial-gradient(900px 560px at 55% 108%, rgba(61, 108, 240, 0.16), transparent 65%),
+    var(--midnight);
+  background-attachment: fixed;
   color: var(--text);
   font-family: 'Outfit', system-ui, sans-serif;
   font-size: 17px;
@@ -60,48 +57,49 @@ a { color: inherit; }
 }
 h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 600; letter-spacing: -0.01em; line-height: 1.05; margin: 0; }
 
-/* ---------- Sidebar ---------- */
-.sidebar {
-  position: fixed; inset: 0 auto 0 0;
-  width: var(--sidebar);
-  background: var(--midnight);
-  border-right: 1px solid var(--line);
-  padding: 44px 32px 32px;
-  display: flex; flex-direction: column;
-  z-index: 20;
+/* ---------- Top bar ---------- */
+.topbar {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+  padding: 22px clamp(24px, 6vw, 88px);
+  background: rgba(10, 14, 24, 0.82);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
 }
+.brand { display: flex; align-items: baseline; gap: 18px; }
 .logo {
   font-family: 'Syne', sans-serif; font-weight: 600;
-  font-size: 30px; letter-spacing: -0.01em;
+  font-size: 28px; letter-spacing: -0.01em;
   text-decoration: none; white-space: nowrap;
   display: inline-block;
 }
-.tagline { color: var(--mist); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; margin: 10px 0 0; }
+.tagline { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; margin: 0; }
 
-.nav { list-style: none; margin: 56px 0 0; padding: 0; display: grid; gap: 4px; }
+.nav { list-style: none; margin: 0; padding: 0; display: flex; gap: 34px; align-items: center; }
 .nav a {
-  display: block; padding: 10px 0 10px 16px;
-  text-decoration: none; color: var(--mist);
-  font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase;
-  border-left: 2px solid transparent;
-  transition: color .2s, border-color .2s;
+  display: block; padding: 6px 0;
+  text-decoration: none;
+  font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase;
+  border-bottom: 1px solid transparent;
+  opacity: .8; transition: opacity .2s;
 }
-.nav a:hover { color: var(--text); }
-.nav a[aria-current="page"] { color: var(--text); border-image: var(--aura) 1; }
-
-.sidebar-foot { margin-top: auto; display: grid; gap: 10px; }
-.sidebar-foot a {
-  color: var(--mist); text-decoration: none; font-size: 13px; letter-spacing: 0.08em;
-  display: flex; align-items: center; gap: 10px;
-}
-.sidebar-foot a:hover { color: var(--gold-soft); }
-.sidebar-foot svg { width: 18px; height: 18px; flex: none; }
-.copy { color: #7A6A55; font-size: 11px; letter-spacing: 0.1em; margin-top: 18px; }
+.nav a:hover { opacity: 1; }
+.nav a[aria-current="page"] { opacity: 1; border-image: var(--logo-two) 1; }
 
 .menu-btn { display: none; }
 
+/* ---------- Footer ---------- */
+.footer {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;
+  padding: 28px clamp(24px, 6vw, 88px);
+  border-top: 1px solid; border-image: var(--aura) 1;
+  font-size: 12px; letter-spacing: 0.14em;
+}
+.footer-links { display: flex; flex-wrap: wrap; gap: 26px; }
+.footer a { text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+.footer svg { width: 16px; height: 16px; color: var(--mist); }
+
 /* ---------- Main ---------- */
-.main { margin-left: var(--sidebar); min-height: 100vh; }
+.main { min-height: 70vh; }
 .aura-line { height: 3px; background: var(--aura); background-size: 200% 100%; animation: sweep 14s linear infinite; }
 .section { padding: 72px clamp(24px, 6vw, 88px); }
 .page-title { font-size: clamp(44px, 7vw, 96px); }
@@ -109,20 +107,22 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 600; letter-spacing: 
 
 /* ---------- Gallery ---------- */
 .gallery {
-  background: var(--midnight-2);
-  padding: 64px clamp(24px, 6vw, 88px) 96px;
-  columns: 3 320px; column-gap: 32px;
+  padding: 24px clamp(24px, 6vw, 88px) 96px;
+  columns: 3 320px; column-gap: 40px;
 }
-.piece {
-  break-inside: avoid; margin: 0 0 32px;
-  background: var(--wood);
-  padding: 14px; border: 1px solid var(--wood-edge);
-  box-shadow: inset 0 0 0 1px rgba(230,150,110,.25), 0 10px 26px rgba(0,0,0,.35);
-  cursor: zoom-in; transition: transform .3s, box-shadow .3s;
+/* Thin glowing frames. Frames take turns: Logo One, Logo Two. */
+.piece { break-inside: avoid; margin: 0 0 44px; cursor: zoom-in; }
+.frame {
+  padding: 10px; background: rgba(10, 14, 24, 0.7);
+  border: 1px solid; border-image: var(--logo-one) 1;
+  box-shadow: 0 0 34px rgba(64, 163, 228, 0.22);
+  transition: box-shadow .3s, transform .3s;
 }
-.piece:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(0,0,0,.45); }
-.piece figcaption { display: flex; justify-content: space-between; gap: 12px; margin-top: 14px; padding: 10px 14px; background: var(--midnight); border: 1px solid var(--wood-edge); font-size: 13px; color: #B9AE9C; }
-.piece figcaption b { font-family: 'Syne', sans-serif; font-weight: 600; color: var(--text); font-size: 15px; }
+.piece:nth-child(even) .frame { border-image: var(--logo-two) 1; box-shadow: 0 0 34px rgba(219, 69, 129, 0.22); }
+.piece:hover .frame { transform: translateY(-3px); box-shadow: 0 0 52px rgba(64, 163, 228, 0.38); }
+.piece:nth-child(even):hover .frame { box-shadow: 0 0 52px rgba(219, 69, 129, 0.38); }
+.piece figcaption { display: flex; justify-content: space-between; gap: 12px; padding: 14px 2px 0; font-size: 13px; }
+.piece figcaption b { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 17px; }
 .piece.soon {
   cursor: default; aspect-ratio: 4 / 5;
   display: grid; place-items: center; text-align: center;
@@ -174,17 +174,18 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 600; letter-spacing: 
 /* ---------- Hair rooms ---------- */
 .rooms { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; padding: 0 clamp(24px, 6vw, 88px) 40px; }
 .room {
-  position: relative; padding: 44px 36px; min-height: 260px;
-  background: var(--wood); border: 1px solid var(--wood-edge);
-  box-shadow: inset 0 0 0 1px rgba(230,150,110,.25), 0 14px 30px rgba(0,0,0,.35);
+  position: relative; padding: 44px 36px; min-height: 240px;
+  background: rgba(10, 14, 24, 0.7);
+  border: 1px solid; border-image: var(--logo-one) 1;
+  box-shadow: 0 0 34px rgba(64, 163, 228, 0.22);
   text-decoration: none; display: flex; flex-direction: column; justify-content: flex-end;
-  overflow: hidden; transition: transform .3s;
+  transition: transform .3s, box-shadow .3s;
 }
-.room::before { content: ""; position: absolute; inset: 0 0 auto; height: 3px; background: var(--aura); background-size: 200% 100%; animation: sweep 14s linear infinite; }
-.room:hover { transform: translateY(-4px); }
+.room:nth-child(even) { border-image: var(--logo-two) 1; box-shadow: 0 0 34px rgba(219, 69, 129, 0.22); }
+.room:hover { transform: translateY(-4px); box-shadow: 0 0 52px rgba(64, 163, 228, 0.38); }
+.room:nth-child(even):hover { box-shadow: 0 0 52px rgba(219, 69, 129, 0.38); }
 .room h2 { font-size: clamp(34px, 4vw, 48px); }
-.room p { color: #B9AE9C; margin: 10px 0 0; }
-.plaque { background: var(--midnight); border: 1px solid var(--wood-edge); padding: 22px 26px; box-shadow: 0 6px 16px rgba(0,0,0,.45); }
+.room p { margin: 10px 0 0; }
 .lookbook-head { padding: 72px clamp(24px, 6vw, 88px) 24px; scroll-margin-top: 20px; }
 .lookbook-head h2 { font-size: 40px; }
 .lookbook { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; padding: 0 clamp(24px, 6vw, 88px) 40px; }
@@ -203,24 +204,18 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 600; letter-spacing: 
 
 /* ---------- Mobile ---------- */
 @media (max-width: 900px) {
-  .sidebar {
-    position: sticky; top: 0; inset: auto; width: 100%; height: auto;
-    flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between;
-    padding: 16px 20px; border-right: 0; border-bottom: 1px solid var(--line);
-  }
+  .topbar { padding: 16px; }
   .logo { font-size: 24px; }
   .tagline { display: none; }
   .menu-btn {
     display: block; background: none; border: 1px solid var(--line); color: var(--text);
     font: inherit; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; padding: 8px 14px; cursor: pointer;
   }
-  .nav, .sidebar-foot { display: none; width: 100%; }
-  .sidebar.open .nav { display: grid; margin-top: 20px; }
-  .sidebar.open .sidebar-foot { display: grid; margin-top: 20px; }
-  .main { margin-left: 0; }
+  .nav { display: none; width: 100%; flex-direction: column; align-items: flex-start; gap: 6px; }
+  .topbar.open .nav { display: flex; }
   .section { padding: 48px 16px; }
-  .gallery { padding: 40px 16px 64px; }
-  .rooms, .lookbook, .lookbook-head { padding-left: 16px; padding-right: 16px; }
+  .gallery { padding: 16px 16px 64px; }
+  .rooms, .lookbook, .lookbook-head, .footer { padding-left: 16px; padding-right: 16px; }
   .story { padding: 56px 16px 72px; }
   .story p { font-size: 20px; }
 }

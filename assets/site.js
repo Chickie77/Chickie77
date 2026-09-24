@@ -18,7 +18,7 @@ const ART = [
 ];
 
 // ============================================================
-//  Sidebar (shared by every page)
+//  Top bar and footer (shared by every page)
 // ============================================================
 const PAGES = [
   ["index.html", "Gallery"],
@@ -33,32 +33,36 @@ const icons = {
   email: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>'
 };
 
-function buildSidebar() {
+function buildHeader() {
   const here = location.pathname.split("/").pop() || "index.html";
   const nav = PAGES.map(([href, label]) =>
     `<li><a href="${href}"${href === here ? ' aria-current="page"' : ""}>${label}</a></li>`).join("");
-  const foot = [
-    LINKS.instagram && `<a href="${LINKS.instagram}" target="_blank" rel="noopener">${icons.instagram}@scottedwinartist</a>`,
-    LINKS.ebay && `<a href="${LINKS.ebay}" target="_blank" rel="noopener">${icons.ebay}Shop on eBay</a>`,
-    LINKS.email && `<a href="mailto:${LINKS.email}">${icons.email}Email</a>`
-  ].filter(Boolean).join("");
 
-  const aside = document.createElement("aside");
-  aside.className = "sidebar";
-  aside.innerHTML = `
-    <div>
+  const header = document.createElement("header");
+  header.className = "topbar";
+  header.innerHTML = `
+    <div class="brand">
       <a class="logo aura-text" href="index.html">SCOTTeHORAN</a>
       <p class="tagline">Artist &middot; Hairstylist &middot; SF</p>
     </div>
     <button class="menu-btn" aria-expanded="false">Menu</button>
-    <ul class="nav">${nav}</ul>
-    <div class="sidebar-foot">${foot}<div class="copy">&copy; ${new Date().getFullYear()} Scott Horan</div></div>`;
-  document.body.prepend(aside);
-  const btn = aside.querySelector(".menu-btn");
+    <ul class="nav">${nav}</ul>`;
+  document.body.prepend(header);
+  const btn = header.querySelector(".menu-btn");
   btn.addEventListener("click", () => {
-    const open = aside.classList.toggle("open");
+    const open = header.classList.toggle("open");
     btn.setAttribute("aria-expanded", open);
   });
+
+  const links = [
+    LINKS.instagram && `<a href="${LINKS.instagram}" target="_blank" rel="noopener">${icons.instagram}@scottedwinartist</a>`,
+    LINKS.ebay && `<a href="${LINKS.ebay}" target="_blank" rel="noopener">${icons.ebay}Shop on eBay</a>`,
+    LINKS.email && `<a href="mailto:${LINKS.email}">${icons.email}Email</a>`
+  ].filter(Boolean).join("");
+  const footer = document.createElement("footer");
+  footer.className = "footer";
+  footer.innerHTML = `<div class="footer-links">${links}</div><div>&copy; ${new Date().getFullYear()} Scott Horan</div>`;
+  document.querySelector(".main").after(footer);
 }
 
 // ============================================================
@@ -69,7 +73,7 @@ function buildGallery() {
   if (!g) return;
   g.innerHTML = ART.map((a, i) => `
     <figure class="piece" data-i="${i}">
-      <img src="${a.src}" alt="${a.title}" loading="lazy">
+      <div class="frame"><img src="${a.src}" alt="${a.title}" loading="lazy"></div>
       <figcaption><b>${a.title}</b><span>${a.details || ""}</span></figcaption>
     </figure>`).join("");
 
@@ -131,7 +135,7 @@ function colorWords(root) {
   });
 }
 
-buildSidebar();
+buildHeader();
 buildGallery();
 buildContact();
 colorWords(document.body);
