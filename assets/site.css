@@ -91,7 +91,7 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 600; letter-spacing: 
 .footer {
   display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;
   padding: 28px clamp(24px, 6vw, 88px);
-  border-top: 1px solid; border-image: var(--aura) 1;
+  border-top: 1px solid; border-image: var(--logo-two) 1;
   font-size: 12px; letter-spacing: 0.14em;
 }
 .footer-links { display: flex; flex-wrap: wrap; gap: 26px; }
@@ -142,24 +142,36 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 600; letter-spacing: 
 .lightbox p { text-align: center; color: var(--text); margin: 16px 0 0; font-family: 'Syne', sans-serif; }
 .lightbox button { position: absolute; top: 20px; right: 24px; background: none; border: 0; color: var(--text); font-size: 34px; cursor: pointer; }
 
-/* ---------- Parchment (story / blog) ---------- */
-.parchment {
-  background: var(--parchment);
-  background-image:
-    radial-gradient(ellipse at 20% 10%, rgba(255,255,255,.35), transparent 60%),
-    radial-gradient(ellipse at 85% 90%, rgba(170,130,70,.18), transparent 55%);
-  color: var(--ink);
-}
-.story { max-width: 720px; margin: 0 auto; padding: 88px 28px 104px; }
-.story .eyebrow { color: #9A6B22; }
-.story h1 { font-size: clamp(42px, 6vw, 72px); color: var(--ink); margin-bottom: 36px; }
+/* ---------- Story ---------- */
+.story { max-width: 760px; margin: 0 auto; padding: 80px 28px 104px; }
 .story p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 23px; line-height: 1.6; margin: 0 0 24px; }
-.story blockquote {
-  margin: 44px 0; padding: 8px 0 8px 28px;
-  border-left: 3px solid; border-image: var(--aura) 1;
-  font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 27px; line-height: 1.45;
+.story .eyebrow { font-family: 'Outfit', sans-serif; font-size: 12px; margin-bottom: 18px; }
+.story .statement-lede { font-family: 'Syne', sans-serif; font-weight: 600; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.2; margin-bottom: 28px; }
+.divider { height: 1px; background: var(--aura); margin: 56px 0; opacity: .7; }
+.portrait {
+  width: 180px; height: 180px; object-fit: cover; border-radius: 50%; margin-bottom: 48px;
+  border: 2px solid; border-color: #DB4581 #3C74EC #40A3E4 #AB52B3;
+  box-shadow: 0 0 36px rgba(138, 91, 214, 0.35);
 }
-.portrait { width: 180px; height: 180px; object-fit: cover; border-radius: 50%; margin-bottom: 36px; box-shadow: 0 0 0 4px var(--parchment), 0 0 0 6px var(--gold); }
+
+/* ---------- Notes (blog) ---------- */
+.notes-wrap { max-width: 820px; margin: 0 auto; padding: 80px 28px 104px; }
+.notes-quote {
+  margin: 28px 0 48px; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic;
+  font-size: 26px; line-height: 1.45;
+}
+.note {
+  padding: 30px 34px; margin-bottom: 26px;
+  background: linear-gradient(120deg, rgba(20, 26, 48, 0.85), rgba(20, 22, 40, 0.6));
+  border: 1px solid rgba(255, 255, 255, 0.06); border-left: 3px solid; border-image: var(--logo-one) 1;
+}
+.note:nth-child(even) { border-image: var(--logo-two) 1; }
+.note .eyebrow { font-size: 11px; margin-bottom: 12px; }
+.note h2 { font-size: 26px; margin-bottom: 14px; }
+.note p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 21px; line-height: 1.6; margin: 0 0 14px; }
+.note.empty { border: 1px dashed rgba(228, 192, 122, 0.3); background: transparent; text-align: center; padding: 26px; }
+.note.empty p { font-family: 'Outfit', sans-serif; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; margin: 0; }
+
 .btn-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px; }
 .btn {
   display: inline-block; padding: 14px 26px;
@@ -168,8 +180,6 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 600; letter-spacing: 
   transition: background .2s, color .2s;
 }
 .btn:hover { background: var(--gold); color: var(--midnight); }
-.parchment .btn { color: var(--ink); border-color: var(--ink); }
-.parchment .btn:hover { background: var(--ink); color: var(--text); }
 
 /* ---------- Hair rooms ---------- */
 .rooms { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; padding: 0 clamp(24px, 6vw, 88px) 40px; }
@@ -216,7 +226,7 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 600; letter-spacing: 
   .section { padding: 48px 16px; }
   .gallery { padding: 16px 16px 64px; }
   .rooms, .lookbook, .lookbook-head, .footer { padding-left: 16px; padding-right: 16px; }
-  .story { padding: 56px 16px 72px; }
+  .story, .notes-wrap { padding: 56px 16px 72px; }
   .story p { font-size: 20px; }
 }
 

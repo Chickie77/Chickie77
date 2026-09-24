@@ -4,7 +4,8 @@ Scott "Scotty" Horan. Painter and hairstylist in San Francisco.
 
 - `index.html`: Gallery (home page)
 - `hair.html`: Hair, with the Beauty Parlor and Groom Me rooms
-- `story.html`: Bio on parchment
+- `story.html`: Artist statement and story
+- `notes.html`: Notes (blog). Add notes in `assets/site.js` under NOTES
 - `contact.html`: Contact and links
 - `assets/site.js`: **edit links and the artwork list here**
 - `assets/site.css`: brand colors and fonts

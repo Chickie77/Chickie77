@@ -17,6 +17,20 @@ const ART = [
   { src: "assets/art/painting-04.jpg", title: "Untitled", details: "" }
 ];
 
+// Add a note: copy the example below, remove the // at the start of
+// each line, and type your own date, title, and words. Newest goes on top.
+// Each item in "text" is one paragraph.
+const NOTES = [
+  // {
+  //   date: "September 2026",
+  //   title: "Your title here",
+  //   text: [
+  //     "First paragraph.",
+  //     "Second paragraph."
+  //   ]
+  // },
+];
+
 // ============================================================
 //  Top bar and footer (shared by every page)
 // ============================================================
@@ -24,6 +38,7 @@ const PAGES = [
   ["index.html", "Gallery"],
   ["hair.html", "Hair"],
   ["story.html", "Story"],
+  ["notes.html", "Notes"],
   ["contact.html", "Contact"]
 ];
 
@@ -135,7 +150,21 @@ function colorWords(root) {
   });
 }
 
+function buildNotes() {
+  const n = document.getElementById("notes");
+  if (!n) return;
+  n.innerHTML = NOTES.length
+    ? NOTES.map(note => `
+      <article class="note">
+        <p class="eyebrow">${note.date}</p>
+        <h2>${note.title}</h2>
+        ${note.text.map(t => `<p>${t}</p>`).join("")}
+      </article>`).join("")
+    : `<div class="note empty"><p>Notes coming soon</p></div>`;
+}
+
 buildHeader();
+buildNotes();
 buildGallery();
 buildContact();
 colorWords(document.body);
