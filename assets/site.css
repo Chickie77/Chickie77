@@ -254,3 +254,18 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 600; letter-spacing: 
 }
 .w1 { background-image: var(--logo-one); }
 .w2 { background-image: var(--logo-two); }
+
+/* ---------- Paper page (Story) ----------
+   Warm ivory parchment with dark brown ink, like a journal page. */
+.paper {
+  background: #F3E9D2;
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(255, 250, 235, .5), transparent 60%),
+    radial-gradient(ellipse at 85% 90%, rgba(170, 130, 70, .18), transparent 55%);
+}
+.paper .w1, .paper .w2 { background: none; -webkit-text-fill-color: #2A1F17; color: #2A1F17; }
+.paper .eyebrow .w1, .paper .eyebrow .w2 { -webkit-text-fill-color: #9A6B22; color: #9A6B22; }
+.paper .portrait { box-shadow: 0 0 0 4px #F3E9D2, 0 0 0 6px #C9963D; }
+.paper .btn { border-color: #2A1F17; }
+.paper .btn:hover { background: #2A1F17; }
+.paper .btn:hover .w1, .paper .btn:hover .w2 { -webkit-text-fill-color: #F3E9D2; color: #F3E9D2; }
