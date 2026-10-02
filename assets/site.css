@@ -269,3 +269,5 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 600; letter-spacing: 
 .paper .btn { border-color: #2A1F17; }
 .paper .btn:hover { background: #2A1F17; }
 .paper .btn:hover .w1, .paper .btn:hover .w2 { -webkit-text-fill-color: #F3E9D2; color: #F3E9D2; }
+
+.story .becoming { font-style: italic; font-size: 27px; margin-top: 8px; }
