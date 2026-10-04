@@ -4,7 +4,8 @@
 const LINKS = {
   instagram: "https://instagram.com/scottedwinartist",
   ebay: "",   // paste your eBay store link between the quotes
-  email: "scotty@scottehoran.com"
+  email: "scotty@scottehoran.com",
+  venmo: "https://venmo.com/u/Scott-Horan-2"
 };
 
 // Add section: "body" to a line to put it on the Body Parts page instead of the Gallery.
@@ -62,6 +63,7 @@ const PAGES = [
 const icons = {
   instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>',
   ebay: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1.2 11H6.2z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg>',
+  venmo: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6.5 9.5v5M17.5 9.5v5"/></svg>',
   email: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>'
 };
 
@@ -90,7 +92,8 @@ function buildHeader() {
   const links = [
     LINKS.instagram && `<a href="${LINKS.instagram}" target="_blank" rel="noopener">${icons.instagram}@scottedwinartist</a>`,
     LINKS.ebay && `<a href="${LINKS.ebay}" target="_blank" rel="noopener">${icons.ebay}Shop on eBay</a>`,
-    LINKS.email && `<a href="mailto:${LINKS.email}">${icons.email}Email</a>`
+    LINKS.email && `<a href="mailto:${LINKS.email}">${icons.email}Email</a>`,
+    LINKS.venmo && `<a href="${LINKS.venmo}" target="_blank" rel="noopener">${icons.venmo}Venmo</a>`
   ].filter(Boolean).join("");
   const footer = document.createElement("footer");
   footer.className = "footer";
@@ -139,6 +142,7 @@ function buildContact() {
   const rows = [
     ["Instagram", "@scottedwinartist", LINKS.instagram],
     ["Email", LINKS.email || "Coming soon", LINKS.email && "mailto:" + LINKS.email],
+    ["Venmo", "@Scott-Horan-2", LINKS.venmo],
     ["Shop", LINKS.ebay ? "eBay store" : "Coming soon", LINKS.ebay]
   ];
   c.innerHTML = rows.map(([k, v, href]) => href
