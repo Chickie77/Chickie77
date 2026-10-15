@@ -12,18 +12,19 @@ const LINKS = {
 // Add a painting: copy one line, change the file name, title, and details.
 // Put the image file in the assets/art folder.
 const ART = [
+  {"src": "assets/art/blue-mahogany.svg", "title": "Blue Mahogany", "details": ""},
   {"src": "assets/art/painting-22.jpg", "title": "The Request", "details": "ink pen, pastels, watercolor pencils", "description": ["The body folded around itself, drawn in scribble with intention in its form. Head down on crossed arms, resting. Seated at a desk, with a chaotic mind in need of rest."], "hashtags": "#figurativedrawing #watercolorpencils #contemporarydrawing #shadowwork #worksonpaper #introspection #sfartist #expressiveart #friendportrait #mechanicmark"},
   { src: "assets/art/painting-04.jpg", title: "Untitled", details: "" },
   {"src": "assets/art/painting-05.jpg", "title": "Emergence", "details": "Ink pens, acrylic, and charcoal on raw canvas\n35 x 50 in", "description": ["The eyes that once guided the wreck now light the way out. Opened, they see."]},
   {"src": "assets/art/painting-01.jpg", "title": "Two Moons, One Argument", "details": "Mixed Media on Fabriano 1264 Watercolor paper 18x24in", "description": ["Gestures made fast, before the thinking can ruin it. The color vibrant and alive. The two circles the only calm thing in the frame and they know it.", "Acrylic, MTN Water-Based Spray Paint by Montana Colors & and dash of superfine glitter because why not sparkle a little.", "This is a repost for a better crop an framing the picture. Gifted this to my long time dear friend and Pirate to the end Ryan Coate in August 2026. It found a good home."]},
   { src: "assets/art/painting-02.jpg", title: "Untitled", details: "" },
-  { src: "assets/art/painting-03.jpg", title: "Untitled", details: "" },
-  { src: "assets/art/painting-08.jpg", title: "Untitled", details: "" },
+  {"src": "assets/art/painting-03.jpg", "title": "The Big One", "details": "43\"x25\" Acrylic on Canvas, Molding Paste on a Cork drink coaster & Mahogany shaved thin", "description": ["We all keep a go-bag and pretend we don't think about this.", "So I painted it. The Golden Gate mid-shake, going into the bay, under a sun that isn't going to help. International orange all the way down. They picked that color so we'd see the bridge in the fog.", "Turns out it photographs well on the way out too."]},
+  {"src": "assets/art/painting-08.jpg", "title": "Bouquet for No Occasion", "details": "acrylic on paper", "description": ["A still life that would not sit still. The flowers kept dying and reblooming under the brush and I let them. Yellow because the room needed the lie of sunlight."]},
   { src: "assets/art/painting-07.jpg", title: "Untitled", details: "" },
   { src: "assets/art/painting-06.jpg", title: "Untitled", details: "" },
-  { src: "assets/art/painting-11.jpg", title: "Untitled", details: "" },
+  {"src": "assets/art/painting-11.jpg", "title": "No Pictures", "details": "charcoal and soft pastel on paper", "description": ["A portrait of being seen before you are ready. Charcoal wants to bury it, the color refuses to dim its glow."]},
   { src: "assets/art/painting-10.jpg", title: "Untitled", details: "" },
-  { src: "assets/art/painting-09.jpg", title: "Untitled", details: "" },
+  {"src": "assets/art/painting-09.jpg", "title": "Who the Hell Are You?", "details": "Derwent Inktense, Derwent watercolor pencil, carbon black, and chalk on 11x15\" Fabriano watercolor paper.", "description": ["A bird mostly eye trying to figure you out. It hasn't blinked since I finished it."]},
   { src: "assets/art/painting-13.jpg", title: "Untitled", details: "" },
   { src: "assets/art/painting-12.jpg", title: "Untitled", details: "" },
   { src: "assets/art/painting-14.jpg", title: "Untitled", details: "" },
