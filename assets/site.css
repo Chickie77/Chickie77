@@ -142,11 +142,16 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 600; letter-spacing: 
 .lightbox {
   position: fixed; inset: 0; z-index: 50;
   background: rgba(10, 8, 6, 0.94);
-  display: none; place-items: center; padding: 32px;
+  display: none; place-items: center; padding: 64px 24px 32px; overflow-y: auto;
 }
-.lightbox.open { display: grid; }
-.lightbox img { max-height: 86vh; width: auto; box-shadow: 0 30px 80px rgba(0,0,0,.6); }
-.lightbox p { text-align: center; color: var(--text); margin: 16px 0 0; font-family: 'Syne', sans-serif; }
+.lightbox.open { display: grid; align-items: safe center; }
+.lightbox-content { width: min(100%, 1000px); min-width: 0; text-align: center; }
+.lightbox img { display: block; max-height: 76vh; max-width: 100%; width: auto; height: auto; margin: 0 auto; box-shadow: 0 30px 80px rgba(0,0,0,.6); }
+.art-caption { max-width: 680px; margin: 24px auto 0; text-align: left; overflow-wrap: anywhere; }
+.art-caption h2 { font-family: 'Syne', sans-serif; font-size: clamp(22px, 4vw, 32px); margin: 0 0 18px; }
+.art-caption p { color: var(--text); margin: 0 0 16px; line-height: 1.65; }
+.art-caption .art-materials { white-space: pre-line; font-size: 14px; }
+.art-caption .art-tags { font-size: 13px; }
 .lightbox button { position: absolute; top: 20px; right: 24px; background: none; border: 0; color: var(--text); font-size: 34px; cursor: pointer; }
 
 /* ---------- Story ---------- */

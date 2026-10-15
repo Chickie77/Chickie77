@@ -12,10 +12,10 @@ const LINKS = {
 // Add a painting: copy one line, change the file name, title, and details.
 // Put the image file in the assets/art folder.
 const ART = [
-  { src: "assets/art/painting-22.jpg", title: "Untitled", details: "" },
+  {"src": "assets/art/painting-22.jpg", "title": "The Request", "details": "ink pen, pastels, watercolor pencils", "description": ["The body folded around itself, drawn in scribble with intention in its form. Head down on crossed arms, resting. Seated at a desk, with a chaotic mind in need of rest."], "hashtags": "#figurativedrawing #watercolorpencils #contemporarydrawing #shadowwork #worksonpaper #introspection #sfartist #expressiveart #friendportrait #mechanicmark"},
   { src: "assets/art/painting-04.jpg", title: "Untitled", details: "" },
-  { src: "assets/art/painting-05.jpg", title: "Untitled", details: "" },
-  { src: "assets/art/painting-01.jpg", title: "Untitled", details: "" },
+  {"src": "assets/art/painting-05.jpg", "title": "Emergence", "details": "Ink pens, acrylic, and charcoal on raw canvas\n35 x 50 in", "description": ["The eyes that once guided the wreck now light the way out. Opened, they see."]},
+  {"src": "assets/art/painting-01.jpg", "title": "Two Moons, One Argument", "details": "Mixed Media on Fabriano 1264 Watercolor paper 18x24in", "description": ["Gestures made fast, before the thinking can ruin it. The color vibrant and alive. The two circles the only calm thing in the frame and they know it.", "Acrylic, MTN Water-Based Spray Paint by Montana Colors & and dash of superfine glitter because why not sparkle a little.", "This is a repost for a better crop an framing the picture. Gifted this to my long time dear friend and Pirate to the end Ryan Coate in August 2026. It found a good home."]},
   { src: "assets/art/painting-02.jpg", title: "Untitled", details: "" },
   { src: "assets/art/painting-03.jpg", title: "Untitled", details: "" },
   { src: "assets/art/painting-08.jpg", title: "Untitled", details: "" },
@@ -121,7 +121,7 @@ function buildGallery() {
 
   const lb = document.createElement("div");
   lb.className = "lightbox";
-  lb.innerHTML = `<button aria-label="Close">&times;</button><div><img alt=""><p></p></div>`;
+  lb.innerHTML = `<button aria-label="Close">&times;</button><div class="lightbox-content"><img alt=""><div class="art-caption"></div></div>`;
   document.body.append(lb);
   const close = () => lb.classList.remove("open");
   lb.addEventListener("click", e => { if (e.target === lb || e.target.closest("button")) close(); });
@@ -131,7 +131,30 @@ function buildGallery() {
     if (!f) return;
     const a = ART[f.dataset.i];
     lb.querySelector("img").src = a.src;
-    const cap = lb.querySelector("p"); cap.textContent = a.title; colorWords(cap);
+    lb.querySelector("img").alt = a.title;
+    const cap = lb.querySelector(".art-caption");
+    cap.replaceChildren();
+    const title = document.createElement("h2");
+    title.textContent = a.title;
+    cap.append(title);
+    (a.description || []).forEach(text => {
+      const paragraph = document.createElement("p");
+      paragraph.textContent = text;
+      cap.append(paragraph);
+    });
+    if (a.details) {
+      const materials = document.createElement("p");
+      materials.className = "art-materials";
+      materials.textContent = a.details;
+      cap.append(materials);
+    }
+    if (a.hashtags) {
+      const tags = document.createElement("p");
+      tags.className = "art-tags";
+      tags.textContent = a.hashtags;
+      cap.append(tags);
+    }
+    colorWords(cap);
     lb.classList.add("open");
   });
 }
