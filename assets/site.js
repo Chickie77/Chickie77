@@ -110,13 +110,31 @@ function buildGallery() {
   const g = document.getElementById("gallery");
   if (!g) return;
   const section = g.dataset.section || "";
-  g.innerHTML = ART.map((a, i) => (a.section || "") !== section ? "" : `
-    <figure class="piece" data-i="${i}" style="--r:0.8">
-      <div class="frame"><img src="${a.src}" alt="${a.title}" loading="lazy"></div>
+  // Feature order is separate from ART so existing image/caption links stay intact.
+  const featured = ["painting-03.jpg", "painting-05.jpg", "painting-04.jpg"];
+  const entries = ART.map((a, i) => ({ a, i })).filter(({ a }) => (a.section || "") === section);
+  if (!section) {
+    const remaining = entries.filter(({ a }) => !featured.some(file => a.src.endsWith(file)));
+    const ordered = [];
+    featured.forEach(file => {
+      const entry = entries.find(({ a }) => a.src.endsWith(file));
+      if (entry) ordered.push(entry, ...remaining.splice(0, 2));
+    });
+    entries.splice(0, entries.length, ...ordered, ...remaining);
+    g.classList.add("gallery-feed");
+  }
+  g.innerHTML = entries.map(({ a, i }, position) => `
+    <figure class="piece${!section && position % 3 === 0 ? " piece-featured" : ""}" data-i="${i}" style="--r:0.8">
+      <div class="frame"><img src="${a.src}" alt="${a.title}" loading="${position === 0 ? "eager" : "lazy"}"${position === 0 ? ' fetchpriority="high"' : ""}></div>
+      ${a.title !== "Untitled" ? `<figcaption><b>${a.title}</b></figcaption>` : ""}
     </figure>`).join("");
-  // Each piece's width follows its picture's shape, so every row lines up evenly.
   g.querySelectorAll(".piece img").forEach(img => {
-    const fit = () => img.naturalWidth && img.closest(".piece").style.setProperty("--r", (img.naturalWidth / img.naturalHeight).toFixed(3));
+    const fit = () => {
+      if (!img.naturalWidth) return;
+      const piece = img.closest(".piece");
+      piece.style.setProperty("--r", (img.naturalWidth / img.naturalHeight).toFixed(3));
+      piece.classList.toggle("piece-portrait", img.naturalHeight > img.naturalWidth);
+    };
     img.complete ? fit() : img.addEventListener("load", fit);
   });
 
