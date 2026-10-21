@@ -156,23 +156,26 @@ function buildGallery() {
     const title = document.createElement("h2");
     title.textContent = a.title;
     cap.append(title);
+    const writing = document.createElement("div");
+    writing.className = "art-writing paper parchment";
     (a.description || []).forEach(text => {
       const paragraph = document.createElement("p");
       paragraph.textContent = text;
-      cap.append(paragraph);
+      writing.append(paragraph);
     });
     if (a.details) {
       const materials = document.createElement("p");
       materials.className = "art-materials";
       materials.textContent = a.details;
-      cap.append(materials);
+      writing.append(materials);
     }
     if (a.hashtags) {
       const tags = document.createElement("p");
       tags.className = "art-tags";
       tags.textContent = a.hashtags;
-      cap.append(tags);
+      writing.append(tags);
     }
+    if (writing.childElementCount) cap.append(writing);
     colorWords(cap);
     lb.classList.add("open");
   });

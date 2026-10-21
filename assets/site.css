@@ -301,3 +301,21 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 600; letter-spacing: 
 .paper .btn:hover .w1, .paper .btn:hover .w2 { -webkit-text-fill-color: #F3E9D2; color: #F3E9D2; }
 
 .story .becoming { font-style: italic; font-size: 27px; margin-top: 8px; }
+
+/* Artwork writing uses the same parchment and ink as the Story page. */
+.art-writing {
+  padding: clamp(22px, 4vw, 40px);
+  border: 1px solid rgba(201, 150, 61, .3);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, .2);
+  color: var(--ink);
+}
+.art-writing p {
+  color: var(--ink);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(20px, 2.5vw, 23px);
+  line-height: 1.6;
+  margin: 0 0 24px;
+}
+.art-writing p:last-child { margin-bottom: 0; }
+.art-writing .art-materials,
+.art-writing .art-tags { font-family: 'Outfit', system-ui, sans-serif; }
